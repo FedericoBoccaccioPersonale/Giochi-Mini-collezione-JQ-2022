@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Il Pescatore</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js" type="text/javascript"></script>
+	
+	<script src="pescatore.js" type="text/javascript"></script>
+	
+	
+	<link rel="stylesheet" href="../Pulsanti.css">
+	<link rel="stylesheet" href="pescatore.css">
+    </head>
+    <body>	
+	<h1 class="intestazione">Il Pescatore</h1>
+	<p class="intestazione">
+	    Usa la canna per pescare i pesci mentre salgono,<br>
+	    usa il retino per catturarli mentre scendono,<br>
+	    spara alle sigarette per evitare che inquinino! <small>Dai pure un' occhiata anche a <a href='https://federicoboccaccio.wordpress.com/spara-al-fumatore/' target='_blank'>questo altro gioco</a></small><br>
+	    Solo i pesci valgono punti. (indicati a destra)
+	</p>
+	
+	<!-- Devo usare 2 canvas per il posizionamento dei pulsanti -->
+	<div id="canvasEsterno">
+	    <div id="canvas">
+		<img src="onde.png" id="onde1" data-dir="-1"><img src="onde.png" id="onde2" data-dir="1">
+	    </div>
+	    
+	    <img src="icoCanna.png" id="canna">
+	    <img src="icoRetino.png" id="retino">
+	    <img src="icoCarro.png" id="carro">
+	    
+	    <div id="punti">0</div>
+	</div>
+	<div id='fine'>
+	    <center>
+		<img src='game over.jpg' width="700px">
+		<br><br><br><br><br><br><br>
+		<h1>Premi F5 per una nuova partita</h1>
+	    </center>
+	</div>
+	<center>
+	    <h2>A causa forse di un bug di JS o di una precisa volontà del browser, devi far partire l' audio a mano! E non va nemmeno il loop!</h2>
+	    <embed
+		id="musica"
+		src="risultato.mp3"
+		width="300"
+		height="100"
+		autostart="true"
+		loop="1" />
+	    <!--
+		Musiche montate da
+		https://www.youtube.com/watch?v=-eZ_GlwHaM0
+		https://www.youtube.com/watch?v=JydNB2Utyjk
+		https://www.youtube.com/watch?v=Mz_QJs45jgs
+		https://elements.envato.com/drum-stick-four-count-2-7ARJUXS (preview)
+	    -->
+	</center>
+	<a href='../Index.html'><button class="button-73">Elenco giochi</button></a>
+    </body>
+</html>

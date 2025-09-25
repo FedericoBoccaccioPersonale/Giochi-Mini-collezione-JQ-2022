@@ -1,0 +1,127 @@
+#DescS, #DescF, #DescC, .bianco
+{
+    color:white;
+    text-align: center;
+}
+
+/*
+    Fa in modo che quando l' ID "s" è hover, quando il suo prossimo elemento è un BR seguito da uno span, allo span venga applicato il css.
+    Quello che trovo stupefacente è che funziona solo sugli ID e non sulle classi.
+    https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-one-element-is-hovered
+    Così è bianco fino a quando non si passa sul pulsante.
+*/
+#s:hover +br+ span,#f:hover +br+ span,#c:hover +br+ span,[name=CmdGioca]:hover +br+span
+{
+    color:blue;
+}
+
+#StaticaSx
+{
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 300px;
+}
+
+#StaticaDx
+{
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+}
+/* Contorto metodo per nascondere se la finestra è piccola */
+@media screen and (max-width: 1024px)
+{
+    #StaticaSx,#StaticaDx
+    {
+	display: none;
+    }
+}
+
+.PrendiSasso___ /* Si può fare, ma è assurdamente complicato, e non ho capito come mostrare solo la mano senza tutta la parte bianca prima. */
+{
+    background: url("morra/Pierre_ciseaux_feuille_lézard_spock_aligned.svg");
+    clip-path: circle(86px at 421px 479px);
+    width: 500px;
+    height: 500px;
+    viewBox:"200 200 400 365";
+}
+
+/*
+    https://www.w3schools.com/css/css_image_sprites.asp
+    Il margin serve per ritagliare le immagini, dato che si ostina a prendere come dimensione dell' immagine
+    i 170 anche se li ho scalati. Suppongo che lo scale agisca sull' immagine ritagliata e non su tutto il blocco.
+*/
+.PrendiSpock
+{
+    left: 0px;
+    width: 170px;
+    height: 170px;
+    background: url('morra/segni in ordine.svg');
+    transform: scale(0.4, 0.4);
+    border: none;
+    background-position: 0px;
+    margin: -50px ;
+}
+.PrendiLucertola
+{
+    left: 0px;
+    width: 170px;
+    height: 170px;
+    background: url('morra/segni in ordine.svg');
+    transform: scale(0.4, 0.4);
+    border: none;
+    background-position: -170px;
+    margin: -50px;
+}
+.PrendiSasso
+{
+    left: 0px;
+    width: 170px;
+    height: 170px;
+    background: url('morra/segni in ordine.svg');
+    transform: scale(0.4, 0.4);
+    border: none;
+    background-position: -340px;
+    margin: -50px ;
+}
+.PrendiForbice
+{
+    left: 0px;
+    width: 170px;
+    height: 170px;
+    background: url('morra/segni in ordine.svg');
+    transform: scale(0.4, 0.4);
+    border: none;
+    background-position: -510px;
+    margin: -50px;
+}
+.PrendiCarta
+{
+    left: 0px;
+    width: 170px;
+    height: 170px;
+    background: url('morra/segni in ordine.svg');
+    transform: scale(0.4, 0.4);
+    border: none;
+    background-position: -680px;
+    margin: -50px;
+}
+
+/* Così posso selezionare gli elementi per qualunque (spero) attributo */
+[name=CmdGioca]:hover
+{
+    background-color: #e65525;
+    border-radius:50%;
+    box-shadow: 0 0 0 3px #e78267;
+    transform: scale(.45); /* Suppongo che debba usare comunque una frazione perchè è stato scalato */
+}
+
+img area{
+          background: linear-gradient(
+        45deg,
+        rgba(29, 236, 197, 0.5),
+        rgba(91, 14, 214, 0.5) 100%
+      );
+}

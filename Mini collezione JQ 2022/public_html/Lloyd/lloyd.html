@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Gioco del 15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		ar=Array.from(document.querySelectorAll(".tassello"));
+		
+		// Forse questa poteva essere in document ready, ma tanto non funziona lo stesso!
+		ar.forEach(tassello =>
+		{
+		    tassello.addEventListener("click", ev => move(tassello));
+		});
+		
+		ultimo = document.querySelector(".ultimo");
+	    });
+	    
+	    
+	    
+	    // Queste funzioni devono essere eseguite fuori
+	    let ultimo;
+	    let ar;
+	    
+	    
+	    
+	    
+	    function gioca()
+	    {
+		var i = 0;
+		var a, b;
+		while (i < 30)
+		{
+		    // Il >>> è un modo contorto per eliminare i decimali: converte il numero in intero e fa lo shift dei bit
+		    a = Math.random() * 15 >>> 0;
+		    b = Math.random() * 15 >>> 0;
+		    scambia(ar[a], ar[b]);
+		    i++;
+		}
+	    };
+	    // Non avevo mai visto questa sintassi. A questo punto, dato che non è spiegato, devo supporre che delle variabili a e b faccia agire direttamente sullo stile
+	    // INFATTI NON LA ACCETTA!!!!!
+	    // E dopo, senza alcuna ragione, ha preso ad accettarla. È STUPEFACENTE!
+	    function scambia({style: a}, {style: b})
+	    {
+		// Non dichiara temp!
+		temp = a.order;
+		a.order = b.order;
+		b.order = temp;
+	    }
+	    function _scambia(_A, _B)
+	    {
+		a=_A.style;
+		b=_A.style;
+		
+		// Non dichiara temp!
+		temp = a.order;
+		a.order = b.order;
+		b.order = temp;
+	    }
+	    
+	    function cambiaX({style})
+	    {
+		return parseInt(style.order)%4;
+	    }
+	    function cambiaY({style})
+	    {
+		return parseInt(style.order)/4 >>> 0;
+	    } 
+
+	    function move(tassello)
+	    {
+		//alert(66);
+		var ux = cambiaX(ultimo);
+		var x = cambiaX(tassello);
+		var uy = cambiaY(ultimo);
+		var y = cambiaY(tassello);
+		var dx = Math.abs(ux-x),  dy = Math.abs(uy-y);
+		// Se è vicino
+		if (dx == 0 && dy == 1 || dx == 1 && dy == 0)
+		{
+		    scambia(ultimo, tassello);
+		    // Mi fido
+		    if (ar.every((p, i) => i == cambiaX(p) + cambiaY(p) * 4))alert("Hai vinto!");
+		}
+	    }
+	</script>
+	
+	
+	<link rel="stylesheet" href="../Pulsanti.css"/>
+	
+	<style>
+	    .tasselli
+	    {
+		/* Per ragioni non spiegate, il border è interno allo span */
+		width: 240px;
+		height: 240px;
+		display: flex;
+		flex-wrap: wrap;
+	    }
+	    .tasselli .tassello
+	    {
+		border: 10px solid #ddd;
+		width: 60px;
+		height: 60px;
+		color:#ffffff;
+		background: #5cb1d6;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 24px;
+	    }
+	    .tasselli .ultimo
+	    {
+		/* Non c' è ragione per fare l' ultimo di dimensione diversa, salvo voler complicare la vita al giocatore... come se non fosse già abbastanza difficile */
+		width: 60px;
+		height: 60px;
+	    }
+	</style>
+    </head>
+    <body>
+	<div class="container">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		https://www.codingcreativo.it/gioco-del-15-online/<br>
+		Nutro però dubbi che sia sempre risolvibile
+	    </div>
+	    
+	    <br><br><br>
+	    
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="tasselli">
+		     <!-- Order serve per ordinare la posizione in cui mettere l' elemento all' interno del parent, non c' entra con lo z-index -->
+		     <div class="tassello" style="order: 0;"><span>1</span></div>
+		     <div class="tassello" style="order: 1;"><span>2</span></div>
+		     <div class="tassello" style="order: 2;"><span>3</span></div>
+		     <div class="tassello" style="order: 3;"><span>4</span></div>
+		     <div class="tassello" style="order: 4;"><span>5</span></div>
+		     <div class="tassello" style="order: 5;"><span>6</span></div>
+		     <div class="tassello" style="order: 6;"><span>7</span></div>
+		     <div class="tassello" style="order: 7;"><span>8</span></div>
+		     <div class="tassello" style="order: 8;"><span>9</span></div>
+		     <div class="tassello" style="order: 9;"><span>10</span></div>
+		     <div class="tassello" style="order: 10;"><span>11</span></div>
+		     <div class="tassello" style="order: 11;"><span>12</span></div>
+		     <div class="tassello" style="order: 12;"><span>13</span></div>
+		     <div class="tassello" style="order: 13;"><span>14</span></div>
+		     <div class="tassello" style="order: 14;"><span>15</span></div>
+		     <div class="ultimo" style="order: 15;"></div>
+		</div>
+	    </div>
+	    
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	    <br><!-- Io ODIO bootstrap! -->
+	    </div>
+	    
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class='btn btn-success' id="gioca" onclick="gioca()">Gioca</button></div> 
+	    
+	    
+	</div>
+	<center><a href='../Index.html'><button class="button-73">Elenco giochi</button></a></center>
+	<br>
+	<center>Per una versione più completa visita <a href="https://federicoboccaccio.wordpress.com/enigma-di-loyd/" target="_blank" class="link-success"><b>federicoboccaccio.wordpress.com/enigma-di-loyd</b></a></center>
+	E niente, la colorazione dei link bootstrap non funziona!
+    </body>
+</html>

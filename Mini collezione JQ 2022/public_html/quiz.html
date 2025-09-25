@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Quiz</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		function ReadFile()
+		{
+		    jQuery.get("quiz.json",function(txt)
+		    {
+			return txt;
+		    });
+		}
+            
+		//alert(ReadFile());
+		
+	    });
+	</script>
+	
+	
+	<link rel="stylesheet" href="Pulsanti.css"/>
+    </head>
+    <body>
+	<div class="container">
+	    <h1>JQUERY NON È UN VERO LINGUAGGIO DI PROGRAMMAZIONE:<BR>NON PERMETTE DI LEGGERE I FILE, OPPURE SONO I BROWSER CHE HANNO FATTO CARTELLO!<br><br>UN' ALTRA DELLE COSE CHE DETESTO DI JQUERY È CHE NON PERMETTE DI CHIAMARE LE FUNZIONI DENTRO A $(function() CON QUELLE FUORI!</h1>
+	    https://www.codingcreativo.it/giochi-in-javascript/
+	</div>
+    </body>
+</html>

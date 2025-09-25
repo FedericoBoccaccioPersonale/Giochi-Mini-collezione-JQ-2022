@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Morra imperiale</title>
+	<!-- Preso da MorraCineseGenerico5segni.html -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		let tentativi = 0,MaxTentativi=20;
+		let puntiC = 0, puntiG = 0;
+		let risorse=10;
+		
+		const diagramma=[
+			    ["Fanteria Pesante","Torre"],
+			    ["Fanteria Pesante","Picchieri"],
+			    ["Picchieri","Cavalleria Pesante"],
+			    ["Picchieri","Cavalleria Leggera"],
+			    ["Fanteria Leggera","Fanteria Pesante"],
+			    ["Fanteria Leggera","Arceri"],
+			    ["Arceri","Picchieri"],
+			    ["Arceri","Fanteria Pesante"],
+			    ["Cavalleria Pesante","Trabucco"],
+			    ["Cavalleria Pesante","Arceri"],
+			    ["Cavalleria Leggera","Trabucco"],
+			    ["Cavalleria Leggera","Fanteria Leggera"],
+			    ["Trabucco","Torre"],
+			    ["Trabucco","Fanteria Leggera"],
+			    ["Torre","Cavalleria Pesante"],
+			    ["Torre","Cavalleria Leggera"]
+				];
+		console.log(diagramma);
+		class cDiagramma
+		{
+		    constructor(a,b)
+		    {
+			this.Vincente=a;
+			this.Perdente=b;
+		    }
+		}
+		class cPunto
+		{
+		    constructor(x,y)
+		    {
+			this.x=x;
+			this.y=y;
+		    }
+		    
+		    Somma(A)
+		    {
+			return new cPunto(this.x+A.x,this.y+A.y);
+		    }
+		    Sottrai(A)
+		    {
+			return new cPunto(this.x-A.x,this.y-A.y);
+		    }
+		    Moltiplica(d)
+		    {
+			return new cPunto(this.x*d,this.y*d);
+		    }
+		}
+
+		const Conversore=(coppia) => { return new cDiagramma(coppia[0],coppia[1]);}
+		let oDiagramma=diagramma.map(Conversore);
+		console.log(oDiagramma.map(JSON.stringify));
+		
+		
+		/*/ Provo a disegnare nel canvas - la cosa estremamente ESECRABILE è che sono costretto a selezionarlo con JS e NON con JQuery!!!!!!
+		// Programmare con linguaggi di programmazione seri, dove esiste il debug, come VB e Unity è tanto più facile e veloce da non riuscire a trovare un paragone!
+		*/
+	
+		const PossibiliGiocate=[];
+		
+		$("._container button").after().each(function( index )
+		{
+		    //console.log( index + ": " + $( this ).attr('after'));
+		    // Rifiuta di farlo coi CSS e poi di modificare il testo visualizzato con JS.
+		    // Sembra che il content preso come "attr" in CSS sia dinamico, suscettibile alle modifiche dello stesso.
+		    let Classe=$(this).attr('class');
+		    Classe=Classe.substring(6);
+		    PossibiliGiocate.push(Classe); // Serve per giocare
+		    Classe=Classe.replace(/([a-z])([A-Z])/g, '$1 $2'); // Separo il CamelCase
+		    //for(let c='A';c<='Z';c++)Classe=Classe.replaceAll(c.toString(),c+c);
+		    
+		    $(this).attr('data-contenuto',Classe); // Assegno il nuovo valore del tag data-*, che ho impostato nel CSS essere quello da prendere per mostrare la descrizione.
+		    
+		    //console.log(Classe+" "+parseInt($(this).position().left+38)+" "+parseInt($(this).position().top+38)+" "+$(this).width()+" "+$(this).height());
+		    // Così trovo le coordinate centrarli dei cerchi. Il +38 va sommato a mano.
+		});
+		
+		// Aggiungo una freccia a caso
+		//$("._container svg").append('<path d="M 30,150 L100,50 L 200,100" style="stroke:red; stroke-width: 1.25px; fill: none; marker-end: url(#arrow);" />');
+		//$("._container").html($("._container").html()); // Per Quanto assurdo, questa riga ridisegna l' SVG!
+		
+		// Ora provo a disegnare le frecce vere
+		/*$("._container button").each(function(index)
+		{
+		    let Classe=$(this).attr('class');
+		    let x=parseInt($(this).position().left+38);
+		    let y=parseInt($(this).position().top+38);
+		    console.log(Classe+" "+x+" "+y);
+		});*/
+		$.each(oDiagramma, function( index, value )
+		{
+		    console.log(index+":"+value.Vincente+">"+value.Perdente); // I nomi degli oggetti con gli spazi
+		    //console.log($("._container [data-contenuto='"+value.Vincente+"']").position().left); // Vado a prendere le coordinate degli oggetti
+		    let x1=$("._container [data-contenuto='"+value.Vincente+"']").position().left+38;
+		    let y1=$("._container [data-contenuto='"+value.Vincente+"']").position().top+38;
+		    let x2=$("._container [data-contenuto='"+value.Perdente+"']").position().left+38;
+		    let y2=$("._container [data-contenuto='"+value.Perdente+"']").position().top+38;
+		    
+		    
+		    
+		    /* Con riferimento a per calcolare gli accorciamenti dei segmenti.ggb
+			So che AB=CD perchè è traslato di -A
+
+			"a" o "d" = Accorciamento/lunghezzaTot
+			E=a*C
+			altro punto=C*(1-a)
+			Poi risommo A
+		     */
+		    let A=new cPunto(x1,y1);
+		    let B=new cPunto(x2,y2);
+		    let C=B.Sottrai(A);
+		    console.log(A,B,C);
+		    let d=50/LunghezzaSegmento(0,0,C.x,C.y); // 50 è l' accorciamento
+		    let E=C.Moltiplica(d);
+		    E=E.Somma(A);
+		    let F=C.Moltiplica(1-d);
+		    F=F.Somma(A);
+		    
+		    x1=E.x;y1=E.y;
+		    x2=F.x;y2=F.y;
+		    
+		    $("._container svg").append('<path d="M '+x1+','+y1+' L'+x2+','+y2+'" style="stroke:blue; stroke-width: 1.25px; fill: none; marker-end: url(#arrow);" />');
+		    //$("._container svg").append('<path d="M '+xx1+','+yy1+' L'+xx2+','+yy2+'" style="stroke:blue; stroke-width: 1.25px; fill: none; marker-end: url(#arrow);" />');
+		    //$("._container").html($("._container").html()); // Per Quanto assurdo, questa riga ridisegna l' SVG! - Qui per debug
+		});
+		$("._container").html($("._container").html()); // Per Quanto assurdo, questa riga ridisegna l' SVG!
+		
+		// Clicca sui pulsani per giocare
+		$("._container button").click(function()
+		{
+		    if(tentativi==MaxTentativi)
+		    {
+			alert("Partita terminata");
+			return;
+		    }
+		    if(risorse==0)
+		    {
+			alert("Risorse esaurite");
+			return;
+		    }
+		    
+		    //let giocatore=($(this).attr("class")).substring(6); // Il pulsante premuto dal giocatore
+			let giocatore=($(this).attr("data-contenuto")); // Il pulsante premuto dal giocatore
+		    //alert(giocatore);
+		    //alert(PossibiliGiocate);
+		    
+		    let computer=PossibiliGiocate[Math.floor(Math.random() * PossibiliGiocate.length)];
+		    $("#MossaPC").html("<img class=Prendi"+computer+" style='position:relative; left:0px; top:0px; margin: -50px ;'>");
+		    // Sovrascrivo, in modo poco elegante, gli elementi che posizionano l' icona nel canvas, e aggiungo il ritaglio.
+		    // Sarebbe stato forse meglio mettere due classi, una per il posizionamento e una per la selezione dell' icona,
+		    // che avrebbe anche evitato di mettere gli after, ma rendeva troppo complicata la gestione dei nomi dalle classi.
+			computer=computer.replace(/([a-z])([A-Z])/g, '$1 $2'); // Separo il CamelCase
+		    
+		    
+		    
+		    tentativi++;
+		    
+		    console.log(giocatore,computer);
+		    const vincente = (giocata) => { return giocata.Vincente==giocatore && giocata.Perdente==computer;}
+		    const perdente = (giocata) => { return giocata.Vincente==computer && giocata.Perdente==giocatore;}
+		    
+		    let vittoria = oDiagramma.filter(vincente); // Se trova 1 allora c' è
+		    let sconfitta = oDiagramma.filter(perdente);
+		    
+		    console.log(vittoria);
+		    console.log(sconfitta);
+		    
+		    if(vittoria.length==1)
+		    {
+			$("#esito").text("Hai fatto un punto");
+			puntiG++;
+			risorse+=3;
+		    }
+		    else if(sconfitta.length==1)
+		    {
+			$("#esito").text("Il computer ha fatto un punto");
+			puntiC++;
+			risorse--;
+		    }
+		    else
+		    {
+			$("#esito").text("Parità");
+			risorse++;
+		    }
+		    
+		    AggiornaValori();
+		    
+		    if(tentativi==MaxTentativi)
+		    {
+			if(puntiC==puntiG)$("#finale").text("Parità");
+			else if(puntiC>puntiG)$("#finale").text("Hai perso!");
+			else $("#finale").text("Hai vinto!");
+		    }
+		});
+		
+		function AggiornaValori()
+		{
+		    $("#tentativoVal").text(tentativi+" di "+MaxTentativi+" | Risorse: "+risorse);
+		    $("#puntiPC").text(puntiC);
+		    $("#puntiUmano").text(puntiG);
+		}
+	    });
+	    
+	    function LunghezzaSegmento(x1,y1,x2,y2)
+	    {
+		let p=Math.pow(x1-x2,2)+Math.pow(y1-y2,2);
+		return Math.pow(p,0.5);
+	    }
+	    
+	    function PuntoMedio(x1,y1,x2,y2)
+	    {
+		let a=x1+x2;
+		let b=y1+y2;
+		return [a/2,b/2];
+	    }
+	    
+
+	</script>
+	
+	
+	<link rel="stylesheet" href="Pulsanti.css"/>
+	<link rel="stylesheet" href="MorraCinese.css"/>
+	<link rel="stylesheet" href="MorraImperiale.css">
+    </head>
+    <body>
+	<div class="container">
+	    <p>A ben vedere chiamare fanteria leggera unità a gittata crea confusione.<br>
+		Avevo pensato di farlo a tempo ma poi c' era il problema che per vincere sarebbe bastato aspettare il termine del tempo una volta in vantaggio e sarebbe decaduta la simulazione del nemico che continua ad attaccare nel tempo.<br>
+		Ancora così non è completamente generico: la disposizione degli elementi è ancora fissata a mano, solo le frecce sono calcolate.</p>
+	    <p><b>Regole speciali:</b> per poter giocare devi avere delle risorse. Ottieni +3 se vinci, +1 in caso di parità e -1 se vince il computer.</p>
+	    Tenuto incolonnato con Bootstrap, solo che così mi ha un po' scombinato la grafica originale.<br>
+	    Con un vero linguaggio di programmazione però Avrei certamente fatto meglio, potendo creare una base da personalizzare in ogni variante.
+	
+	    <table width="100%"><tr>
+		<td width="50%"><h1>🖥️ <span id="puntiPC">0</span></h1></td>
+		<td width="50%" align="right"><h1><span id="puntiUmano">0</span> 🧒🏼</h1></td>
+	    </tr></table>
+
+
+	    <center>
+		<h1>Tentativo <span id="tentativoVal">...</span></h1>
+	    </center>
+	
+	    <div class="row">
+		<div class="col-lg-6 col-xs-12">
+		    <center>Scegli</center>
+		    <div class="_container"><!-- Questo è un container per l' SVG, non ha a che vedere col container di bootstrap -->
+			<svg width="500" height="500">
+			<defs>
+			<!-- refx era 2, ma così la freccia usciva e il segmento sembrava più lungo -->
+			<marker id="arrow" markerWidth="13" markerHeight="13" refx="8" refy="6" orient="auto">
+			    <path d="M2,1 L2,10 L10,6 L2,2" style="fill:red;" />
+			</marker>
+			</defs>
+
+			<!path d="M 30,150 L100,50 L 200,100"
+			    style="stroke:red; stroke-width: 1.25px; fill: none;
+			    marker-end: url(#arrow);"
+			    /><!-- M indica di muoversi senza disegnare verso un certo punto con le coordinate che partono da in alto a sinistra
+				   e crescono verso il basso, come il primo quadrante cartesiano rovesciato.
+				   L indica di disegnare una riga dalle precedenti coordinate alle nuove, sempre rispetto all' origine.
+				   Dopo la lettera può esserci o meno uno spazio.-->
+			</svg>
+			<button class='PrendiFanteriaPesante'></button>
+			<button class='PrendiFanteriaLeggera'></button>
+			<button class='PrendiPicchieri'></button>
+			<button class='PrendiArceri'></button>
+			<button class='PrendiCavalleriaPesante'></button>
+			<button class='PrendiCavalleriaLeggera'></button>
+			<button class='PrendiTrabucco'></button>
+			<button class='PrendiTorre'></button>
+		    </div>
+		</div>
+		<div class="col-lg-6 col-xs-12">
+
+		    <center><h3>Mossa del computer</h3></center>
+		    <center><h1 id="MossaPC"></h1></center>
+		    <center><h2 id="esito"></h2></center>
+		    <center><h1 id="finale"></h1></center>
+		    <!-- Anche se credo questo venga comunque intercettato, non dovrebbe creare problemi in quanto cambierà pagina -->
+		    <center><a href='Index.html'><button class="button-73">Elenco giochi</button></a></center>
+		    <center>Leggi la console per lo storico delle mosse</center>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

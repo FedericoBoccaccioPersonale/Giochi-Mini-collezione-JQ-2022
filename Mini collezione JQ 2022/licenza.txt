@@ -1,0 +1,8 @@
+Questa collezione di giochi è stata distribuita su https://federicoboccaccio.wordpress.com/mini-collezione-jq-2022
+Sei invitato a mettere il link alla pagina di distribuzione ufficiale e a non creare altre forme di distribuzione.
+
+Il codice di questo progetto è, per cause di forza maggiore, open source, e come tale puoi leggere il sorgente e modificarlo. Se crei modifiche di questo progetto o di parti di esso o se copi qualche funzione sei pregato di mettere riferimento alla pagina di download del progetto originale.
+
+Nel caso ti venisse voglia di leggere il codice (a tuo rischio e pericolo) potrai notare alcuni problemi di NetBeans come la gestione di indenzazione e caratteri speciali diversa dagli altri programmi, cosa che crea parecchi problemi, oltre a una certa aggressività nell' aggiungere codice nei commenti.
+E anche altri problemi riscontrati.
+Purtroppo spostare un file non aggiorna in automatico i riferimenti, quindi la maggior parte di essi sono rimasti lì dove erano.

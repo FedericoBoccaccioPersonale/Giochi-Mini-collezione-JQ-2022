@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Gioco dei dadi</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		
+		$("#gioca").click(function()
+		{
+		    let NumDadi=$("#NumDadi").val();
+		    let MaxVal=$("#FacceDadi").val();
+		    //alert(NumDadi+" "+MaxVal);
+		    
+		    const LanciUmani=[];
+		    const LanciPC=[];
+		    
+		    // Genero
+		    for (let i = 0; i < NumDadi; i++)
+		    {
+			LanciPC.push(Math.round(Math.random()*MaxVal+1));
+			LanciUmani.push(Math.round(Math.random()*MaxVal+1));
+		    }
+		    
+		    // Disegno
+		    $("#AreaDatiComputer").html("");
+		    $("#AreaDatiGiocatore").html("");
+		    $("#confronti").html("");
+		    for (let i = 0; i < NumDadi; i++)
+		    {			
+			// Pretende che sia tutto su una sola riga!!!!!!
+			$("#AreaDatiComputer").append("<td><div class='ContenitoreImgTestoBlu'><img src='dado_vuoto.svg' style='width:150px;'><div class='TestoCentrato'>"+LanciPC[i]+"</div></div></td>");
+			$("#AreaDatiGiocatore").append("<td><div class='ContenitoreImgTestoRosso'><img src='dado_vuoto.svg' style='width:150px;'><div class='TestoCentrato'>"+LanciUmani[i]+"</div></div></td>");
+		    }
+		    
+		    switch($('input[name="TipoVittoria"]:checked').val())
+		    {
+			case "somma":
+			    let sommaP=0;
+			    let sommaU=0;
+			    for (let i = 0; i < NumDadi; i++)
+			    {
+				sommaU+=LanciUmani[i];
+				sommaP+=LanciPC[i];
+			    }
+			    let esito="";
+			    if(sommaU>sommaP)esito="Hai vinto";
+			    else esito="Hai perso";
+			    $("#esito").html("<font color='cornflowerblue'>Hai totalizato "+sommaU+"</font><br><font color='crimson'>Il computer ha totalizato "+sommaP+"</font><br><b>"+esito+"</b>");
+			    break;
+			case "risiko":
+			    let contU=0;
+			    let contP=0;
+			    for (let i = 0; i < NumDadi; i++)
+			    {
+				if(LanciUmani[i]!==LanciPC[i])
+				{
+				    if(LanciUmani[i]>LanciPC[i])
+				    {
+					contU++;
+					$("#confronti").append("<td><center><font color='cornflowerblue'>Vantaggio<br>umano</font></center></td>");
+				    }
+				    else 
+				    {
+					contP++;
+					$("#confronti").append("<td><center><font color='crimson'>Vantaggio<br>macchina</font></center></td>");
+				    }
+				}
+				else
+				{
+				    $("#confronti").append("<td><center><font color='gray'>Pari</font></center></td>");
+				}
+			    }
+			    
+			    
+			    let esito2=""; // - Anche se si tratta di LET e di un CASE diverso, prende comunque come buona la dichiarazione di variabile di sopra! Ma se evito di dichiararla va in errore, quindi devo dargli un nome diverso.
+			    if(contU>contP)esito2="Hai vinto";
+			    else esito2="Hai perso";
+			    $("#esito").html("<font color='cornflowerblue'>Hai "+contU+" lanci vincenti</font><br><font color='crimson'>Il computer ha "+contP+" lanci vincenti</font><br><b>"+esito2+"</b>");
+			    break;
+		    }
+		});
+		
+	    });
+	</script>
+	
+	
+	<link rel="stylesheet" href="../Pulsanti.css"/>
+	<link rel="stylesheet" href="ImgScritte.css"/>
+    </head>
+    <body>
+	<div class="container">
+	    <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    https://www.codingcreativo.it/gioco-dei-dadi-online/<br>
+		    Decisamente, bootstrap è assolutamente incapace di aggiungere una dominante colore alle immagini, così come di sovrapporre del testo!<br><br>
+		    Vantaggio del banco sul totale.
+		</div>
+	    </div>
+	    
+	    <p />
+	    
+	    <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+		    Imposta il numero di dadi:
+		    <select id="NumDadi">
+			<option>1</option>
+			<option>2</option>
+			<option selected>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+		    </select>
+		    <br>
+		    Imposta facce:
+		    <select id="FacceDadi">
+			<option>4</option>
+			<option selected>6</option>
+			<option>12</option>
+			<option>24</option>
+		    </select>
+		    <br>
+		    
+		    <input type="radio" value="somma" name="TipoVittoria" checked /> Vittoria per somma
+		    &emsp14;&emsp14;
+		    <input type="radio" value="risiko" name="TipoVittoria" /> Confronta i singoli dadi
+		</div>
+	    </div>
+	    
+	    <p />
+	    
+	    
+	    
+	    <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+		    <p><input type="button" id="gioca" value="Lancia i dadi" class="button-73"></p>
+		</div>
+	    </div>
+	    
+	    <p />
+	    
+	     <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    <center>
+			<table>
+			    <tr id="AreaDatiGiocatore"></tr>
+			    <tr id="AreaDatiComputer"></tr>
+			    <tr id="confronti"></tr>
+			</table>
+		    </center>
+		</div>
+	    </div>
+	    
+	    
+
+	    <p /><p />
+	    
+	    
+	    <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    <h1><center id="esito"></center></h1>
+		</div>
+	    </div>
+	    
+	    
+	    <p /><p />
+	    
+	    <center><a href='../Index.html'><button class="button-73">Elenco giochi</button></a></center>
+	</div>
+    </body>
+</html>

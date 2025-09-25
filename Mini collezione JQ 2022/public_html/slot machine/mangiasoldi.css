@@ -1,0 +1,78 @@
+#slot-machine
+{
+    border-radius: 5px;
+    background-color: #3889c4;
+    margin-top: 30px;
+    padding: 20px;
+    width: 500px; /* Modificare questo valore se si cambia il numero di ruote */
+    margin: auto;
+    text-align: center;
+}
+h2#titolo
+{
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    padding:10px;
+}
+
+section.slots
+{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    background-color: #FAFAFA;
+    padding: 20px;
+}
+
+#button-slot
+{
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #ffc83d;
+    border: 1px solid #3889c4;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.icons
+{
+    font-size: 50px;
+    text-align: center;
+    margin:10px;
+}
+
+#button-slot:hover
+{
+    background-color: #16486c;
+}
+
+#button-slot:disabled,#button-slot:disabled:hover
+{
+    /* Quando è disattivo cambio colore e rimuovo hover */
+    background-color: #3D74FF;
+    cursor: no-drop;
+}
+
+div#risultato
+{
+    width: 300px;
+    margin: 10px auto;
+    border: 1px solid #87c6f4;
+    border-radius: 15px;
+    background-color: #87c6f4;
+    padding: 10px;
+}
+
+#punteggio::before
+{
+    content: attr(data-vinte) " vinte su " attr(data-totali) " giocate";
+    font-size: 20px;
+}
+#punteggio::after
+{
+    content: "Probabilità di vittoria: 1 su " attr(data-prob);
+    font-size: 18px;
+}

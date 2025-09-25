@@ -1,0 +1,22 @@
+.ContenitoreImgTestoRosso
+{
+    position: relative;
+    text-align: center;
+    color: crimson; /* Del testo */
+    font-size: 80px;
+}
+.ContenitoreImgTestoBlu
+{
+    position: relative;
+    text-align: center;
+    color: cornflowerblue; /* Del testo */
+    font-size: 80px;
+}
+
+.TestoCentrato
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

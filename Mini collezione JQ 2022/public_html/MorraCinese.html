@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+https://www.codingcreativo.it/gioco-della-morra-cinese-in-javascript/
+-->
+<html>
+    <head>
+	<title>Morra cinese</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js" type="text/javascript"></script>
+	
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		var tentativi = 0,MaxTentativi=3;
+		var giocatore, computer;
+		var puntiC = 0, puntiG = 0;
+		
+		$(".button-73").click(function ()
+		{
+		    if(tentativi==MaxTentativi)return; // La partita è terminata
+		    giocatore=(this.id); // Il pulsante premuto dal giocatore
+		    
+		    var PossibiliGiocate="sfc";
+		    computer=PossibiliGiocate.charAt(Math.floor(Math.random() * 3));
+		    switch(computer)
+		    {
+			case "s":
+			    $("#MossaPC").text("🪨");
+			    break;
+			case "f":
+			    $("#MossaPC").text("✂️");
+			    break;
+			case "c":
+			     $("#MossaPC").text("📃");
+			    break;
+		    }
+		    
+		    tentativi++;
+		    if (computer == giocatore)
+		    {
+			$("#esito").text("Parità");
+		    }
+		    else if ((giocatore == 's' && computer == 'f') || (giocatore == 'f' && computer == 'c') || (giocatore == 'c' && computer == 's'))
+		    {
+			$("#esito").text("Hai fatto un punto");
+			puntiG++;
+		    } 
+		    else
+		    {
+			$("#esito").text("Il computer ha fatto un punto");
+			puntiC++;
+		    }
+		    AggiornaValori();
+		    
+		    if(tentativi==MaxTentativi)
+		    {
+			if(puntiC==puntiG)$("#finale").text("Parità");
+			else if(puntiC>puntiG)$("#finale").text("Hai perso!");
+			else $("#finale").text("Hai vinto!");
+		    }
+		});
+
+		
+		function AggiornaValori()
+		{
+		    $("#tentativoVal").text(tentativi+" di "+MaxTentativi);
+		    $("#puntiPC").text(puntiC);
+		    $("#puntiUmano").text(puntiG);
+		}
+	    });
+	</script>
+	
+	
+	<link rel="stylesheet" href="Pulsanti.css"/>
+	<link rel="stylesheet" href="MorraCinese.css"/>
+    </head>
+    <body>
+	Vedi anche: https://it.wikipedia.org/wiki/Morra_cinese
+	<table width="100%"><tr>
+		<td width="50%"><h1>🖥️ <span id="puntiPC">0</span></h1></td>
+		<td width="50%" align="right"><h1><span id="puntiUmano">0</span> 🧒🏼</h1></td>
+	</tr></table>
+	<center>
+	    <h1>Tentativo <span id="tentativoVal">...</span></h1>
+	    Scegli
+	</center>
+	<table class="tabPulsanti" align="center"><tr>
+	    <td><button class="button-73" id="s">✊🏼</button><br><span id="DescS">Sasso</span></td>
+	    <td><button class="button-73" id="f">✌🏼</button><br><span id="DescF">Forbici</span></td>
+	    <td><button class="button-73" id="c">✋🏼</button><br><span id="DescC">Carta</span></td>
+	</tr></table>
+	<center><h3>Mossa del computer</h3></center>
+	<center><h1 id="MossaPC">✂️,🪨,📃</h1></center>
+	<center><h2 id="esito"></h2></center>
+	<center><h1 id="finale"></h1></center>
+	<!<!-- Anche se credo questo venga comunque intercettato, non dovrebbe creare problemi in quanto cambierà pagina -->
+	<center><a href='Index.html'><button class="button-73">Elenco giochi</button></a></center>
+    </body>
+</html>

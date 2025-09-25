@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<!--<!-- https://www.codingcreativo.it/gioco-indovina-numero-in-javascript/ va bene, ma dai! -->
+	<title>Indovina il numero v2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	    $(function()
+	    {
+		var numeroDaIndovinare,tentativi,min,max;
+		
+		$("#gioca").click(function()
+		{
+		    const arr = $("#diff").val().split(','); // Prendo il valore della select ed estraggo i due valori
+		    min=parseInt(arr[0]);
+		    max=parseInt(arr[1]);
+		    //console.log(arr,min,max);
+		    var numCas=Math.random();
+		    numeroDaIndovinare=Math.floor(numCas * (max-min))+min;
+		    tentativi= Math.ceil(Math.log2(max-min));
+		    
+		    //alert(tentativi);
+		    $("#diff").attr("disabled","disabled");
+		    $("#gioca").attr("disabled","disabled");
+		    $("#resa").removeAttr("disabled");
+
+		    ScriviTentativi();
+		    
+		    $("#mm").removeAttr("hidden");
+		    $("#min").text(min-1);
+		    $("#max").text(max+1);
+		    $("#range").text(max-min+1);
+		    $("#inp").removeAttr("hidden");
+		    $("#tentativoVal").val('');
+		});
+		
+		function ScriviTentativi()
+		{
+		    var vite="";
+		    for(var i=0;i<tentativi;++i)vite+="💚";// Cuori che NetBeans non sa scrivere!
+		    $("#tentativi span:first").text(vite);
+		    $("#tentativi span:last").text(tentativi);
+		}
+		
+		$("#convalida").click(function()
+		{
+		    var numInserito=parseInt($("#tentativoVal").val());
+		    //console.log(numInserito,numeroDaIndovinare);
+		    //alert(numInserito);
+		    $("#tentativoVal").val("");
+		
+		    if(numInserito==numeroDaIndovinare)
+		    {
+			$("#esito").text("Numero indovinato!").addClass("verde").removeClass("rosso");
+			$("#resa").attr("disabled","disabled");
+			$("#convalida").attr("disabled","disabled");
+		    }
+		    else
+		    {
+			if(numInserito>numeroDaIndovinare)max=numInserito-1;
+			else min=numInserito+1;
+			$("#min").text(min-1);
+			$("#max").text(max+1);
+			$("#inserito").text(numInserito);
+			$("#cfr").text(numInserito<numeroDaIndovinare ? "maggiore":"minore");
+			$("#min").removeClass("circle-sketch-highlight");
+			$("#max").removeClass("circle-sketch-highlight");
+			(numInserito<numeroDaIndovinare ? $("#min") : $("#max")).addClass("circle-sketch-highlight");
+			tentativi--;
+			ScriviTentativi();
+			$("#range").text(max-min+1);
+
+			if(tentativi==0)
+			{
+			    $("#esito").html("Tentativi esauriti! Il numero era: <b>"+numeroDaIndovinare+"</b>").addClass("rosso").removeClass("verde");
+			    $("#convalida").attr("disabled","disabled");
+			    $("#resa").attr("disabled","disabled");
+			}
+		    }
+		    $("#appare").removeAttr("hidden");
+		});
+		
+		$("#riprova").click(function()
+		{
+		    // Questo però non disabilita il pulsante di resa
+		    window.location.reload();
+		});
+		
+		$("#resa").click(function()
+		{
+		    $("#convalida").attr("disabled","disabled");
+		    $("#esito").html("Il numero era: <b>"+numeroDaIndovinare+"</b>").addClass("rosso").removeClass("verde");
+		});
+		
+		$("#resa").attr("disabled","disabled"); // Altrimenti, suppondo a causa del fatto che l' attributo viene tolto, non viene ripristinato con F5 ma solo premento ancora Invio sull' URL. Tuttavia altri oggetti che hanno valore hidden vengono ripristinati correttamente.
+	    });
+	</script>
+	
+	<link rel="stylesheet" href="generico.css">
+	<link rel="stylesheet" href="Pulsanti.css">
+    </head>
+    <body>
+	<h1>Indovina il numero II</h1>
+	Seleziona la difficoltà:
+	<select id="diff" class="giallino">
+	    <option value="1,10">Facilissimo (tra 1 e 10)</option>
+	    <option value="0,10">Facile (tra 0 e 10)</option>
+	    <option value="1,100">Medio (tra 1 e 100)</option>
+	    <option value="0,100">Impegnativo (tra 0 e 100)</option>
+	    <option value="1,1000">Difficile (tra 1 e 1000)</option>
+	    <option value="0,1000">Molto difficile (tra 0 e 1000)</option>
+	    <option value="1,1000000">Difficilissimo (tra 1 e 1.000.000)</option>
+	    <option value="0,1048575">Estremo (tra 0 e 1.048.575)</option>
+	    <option value="1966,2377">Stellare 🖖 (tra 1966 e 2377)</option><!--<!-- Ovvero dalla prima messa in onda di TOS all' ultimo anno di ambientazione di Voyager -->
+	</select>
+	<button id="gioca">Gioca</button> <button id="resa" disabled="disabled">Mi arrendo</button>
+	<p id="tentativi" class="font20">Tentativi: <span class="font15"></span> (<span>...</span>)</p>
+	<!-- Non posso usare la chiusura rapida dei B perchè altrimenti, inspiegabilmente, crea due paragrafi differenti -->
+	<p id='appare' hidden>Hai inserito <span id="inserito"></span>, il numero è <span id='cfr'></span>.</p>
+	<p id="mm" class="font20" hidden>Il numero è maggiore di <b id="min"></b>&nbsp;&nbsp; e minore di <b id="max"></b>&nbsp;&nbsp; (<span id="range"></span> numeri).</p>
+	<p id="inp" class="font20" hidden>
+	    Il tuo numero: <input type="text" size="5" id="tentativoVal"/> <button id="convalida">Convalida</button><br>
+	    <span class="font15">Inserici un numero valido o il tentativo andrà perso.</span>
+	</p>
+	<h2 id="esito"></h2>
+	<button id="riprova">Riprova</button>
+	<center><a href='Index.html'><button class="button-73">Elenco giochi</button></a></center>
+    </body>
+</html>

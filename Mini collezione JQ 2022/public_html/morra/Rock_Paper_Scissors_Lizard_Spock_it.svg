@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="svg2" inkscape:export-filename="C:\Documents and Settings\David\My Documents\Rock Paper Scissors Lizard Spock.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:version="0.47 r22583" sodipodi:version="0.32" sodipodi:docname="Rock_Paper_Scissors_Lizard_Spock_en.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px" height="365px" viewBox="0 0 400 365" enable-background="new 0 0 400 365" xml:space="preserve">
+<sodipodi:namedview inkscape:snap-center="true" inkscape:snap-global="false" inkscape:window-width="1280" inkscape:window-height="953" inkscape:window-x="-4" inkscape:window-y="-4" inkscape:window-maximized="0" inkscape:object-paths="true" bordercolor="#666666" inkscape:current-layer="layer1" showgrid="true" borderopacity="1.0" gridtolerance="10000" guidetolerance="10" objecttolerance="10" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="4" inkscape:cx="207.91619" inkscape:cy="65.07975" inkscape:document-units="px" pagecolor="#ffffff" id="base" inkscape:object-nodes="true" inkscape:snap-intersection-line-segments="true">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 200 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="400 : 200 : 1" inkscape:persp3d-origin="200 : 133.33333 : 1" id="perspective107">
+		</inkscape:perspective>
+</defs>
+<g id="layer1" inkscape:groupmode="layer" inkscape:label="Layer 1">
+	<text transform="matrix(1 0 0 1 171.5247 44.95)" fill="#00D0F1" font-family="'Helvetica'" font-size="20">Forbici</text>
+	<text transform="matrix(1 0 0 1 330.2561 155.45)" fill="#FFB300" font-family="'Helvetica'" font-size="20">Carta</text>
+	<text transform="matrix(1 0 0 1 271.6282 334.45)" fill="#5100F1" font-family="'Helvetica'" font-size="20">Sasso</text>
+	<text transform="matrix(1 0 0 1 69.3157 334.45)" fill="#51C651" font-family="'Helvetica'" font-size="20">Lizard</text>
+	<text transform="matrix(1 0 0 1 22.4114 155.45)" fill="#F13551" font-family="'Helvetica'" font-size="20">Spock</text>
+	<path id="path3201" color-interpolation="linearRGB" fill="none" stroke="#F13551" stroke-width="1.75" d="M80.5,126.5l87.75-63.75   "/>
+	<path id="path3983" color-interpolation="linearRGB" fill="none" stroke="#00D0F1" stroke-width="1.75" d="M232,63l87.25,63.5"/>
+	<path id="path4500" color-interpolation="linearRGB" fill="none" stroke="#FFB300" stroke-width="1.75" d="M340,187.75L306,292"/>
+	<path id="path6047" color-interpolation="linearRGB" fill="none" stroke="#5100F1" stroke-width="1.75" d="M253.25,329.25H144"/>
+	<path id="path6564" color-interpolation="linearRGB" fill="none" stroke="#51C651" stroke-width="1.75" d="M96.912,303.47   L58.75,184.625"/>
+	<path id="path7081" color-interpolation="linearRGB" fill="none" stroke="#00D0F1" stroke-width="1.75" d="M187.03,77.913   l-69.442,215.134"/>
+	<path id="path7598" color-interpolation="linearRGB" fill="none" stroke="#51C651" stroke-width="1.75" d="M137.532,306.308   L321.32,173.433"/>
+	<path id="path8115" color-interpolation="linearRGB" fill="none" stroke="#FFB300" stroke-width="1.75" d="M311.481,150.391H86.62"/>
+	<path id="path8632" color-interpolation="linearRGB" fill="none" stroke="#F13551" stroke-width="1.75" d="M78.135,172.665   l183.787,133.937"/>
+	<path id="path9149" color-interpolation="linearRGB" fill="none" stroke="#5100F1" stroke-width="1.75" d="M281.782,290.752   L212,76.559"/>
+	
+		<text transform="matrix(0.3213 0.947 -0.947 0.3213 231.6086 172.7649)" fill="#5100F1" font-family="'Helvetica-Bold'" font-size="12">rompe</text>
+	<text transform="matrix(1 0 0 1 182.1165 341.7498)" fill="#5100F1" font-family="'Helvetica-Bold'" font-size="12">schiaccia</text>
+	
+		<text transform="matrix(0.8172 -0.5763 0.5763 0.8172 209.7102 248.8455)" fill="#51C651" font-family="'Helvetica-Bold'" font-size="12">mangia</text>
+	
+		<text transform="matrix(0.3129 0.9498 -0.9498 0.3129 60.7327 229.1316)" fill="#51C651" font-family="'Helvetica-Bold'" font-size="12">avvelena</text>
+	<text transform="matrix(1 0 0 1 182.158 163.4998)" fill="#FFB300" font-family="'Helvetica-Bold'" font-size="12">invalida</text>
+	
+		<text transform="matrix(0.3075 -0.9515 0.9515 0.3075 329.0911 257.1111)" fill="#FFB300" font-family="'Helvetica-Bold'" font-size="12">avvolge</text>
+	
+		<text transform="matrix(0.8117 0.5841 -0.5841 0.8117 255.8694 75.0681)" fill="#00D0F1" font-family="'Helvetica-Bold'" font-size="12">taglia</text>
+	
+		<text transform="matrix(0.8055 0.5926 -0.5926 0.8055 155.1077 222.7849)" fill="#F13551" font-family="'Helvetica-Bold'" font-size="12">vaporizza</text>
+	
+		<text transform="matrix(0.8184 -0.5747 0.5747 0.8184 96.4124 108.2439)" fill="#F13551" font-family="'Helvetica-Bold'" font-size="12">rompe</text>
+	
+		<text transform="matrix(0.3123 -0.95 0.95 0.3123 155.0364 217.4294)" fill="#00D0F1" font-family="'Helvetica-Bold'" font-size="12">decapitano</text>
+	<path id="path13255" color-interpolation="linearRGB" fill="none" stroke="#F13551" stroke-width="1.25" d="M139.75,72.625   L169.625,62l-19.5,24.875"/>
+	<path id="path13257" color-interpolation="linearRGB" fill="none" stroke="#5100F1" stroke-width="1.25" d="M212.25,106.375   l-1-31.75l17.5,26"/>
+	<path id="path13259" color-interpolation="linearRGB" fill="none" stroke="#00D0F1" stroke-width="1.25" d="M302.125,103.375   l19.75,25l-29.875-11"/>
+	<path id="path13261" color-interpolation="linearRGB" fill="none" stroke="#51C651" stroke-width="1.25" d="M293.125,183.375   l29.5-10.625L303,197.625"/>
+	<path id="path13265" color-interpolation="linearRGB" fill="none" stroke="#FFB300" stroke-width="1.25" d="M323.25,267.5   l-17.75,26.625l1.25-32"/>
+	<path id="path13267" color-interpolation="linearRGB" fill="none" stroke="#F13551" stroke-width="1.25" d="M243.75,282.125   L263.5,307.5l-29.875-11"/>
+	<path id="path13269" color-interpolation="linearRGB" fill="none" stroke="#5100F1" stroke-width="1.25" d="M172.25,338.125   L172.25,338.125l-30.5-8.875l30.75-8.625"/>
+	<path id="path13271" color-interpolation="linearRGB" fill="none" stroke="#00D0F1" stroke-width="1.25" d="M134.75,267.875   L134.75,267.875L117.125,294.5l1-32"/>
+	<path id="path13273" color-interpolation="linearRGB" fill="none" stroke="#51C651" stroke-width="1.25" d="M59.25,214.625l-1-32   l17.5,26.5"/>
+	<path id="path13275" color-interpolation="linearRGB" fill="none" stroke="#FFB300" stroke-width="1.25" d="M114.875,159.125   L84.5,150.5l30.625-8.875"/>
+</g>
+</svg>

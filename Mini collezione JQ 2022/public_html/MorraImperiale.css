@@ -1,0 +1,230 @@
+@charset "UTF-8";
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Author     : boccaccio.federico
+*/
+/*
+    'posizione' sta per la posizione nell' imamgine
+    'pos' sta per la posizione nella pagina
+*/
+.PrendiCavalleriaPesante {
+  position: absolute;
+  left: 47px;
+  top: -58px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: 0px 0px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiCavalleriaPesante::before {
+  content: attr(data-contenuto);
+  position: absolute;
+  top: -70px;
+  font-size: 40px;
+  transform: translate(-50%, 25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiCavalleriaPesante:hover:before {
+  color: blue; }
+
+.PrendiCavalleriaLeggera {
+  position: absolute;
+  left: 197px;
+  top: -58px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -256px 0px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiCavalleriaLeggera::before {
+  content: attr(data-contenuto);
+  position: absolute;
+  top: -70px;
+  font-size: 40px;
+  transform: translate(-50%, 25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiCavalleriaLeggera:hover:before {
+  color: blue; }
+
+.PrendiFanteriaPesante {
+  position: absolute;
+  left: 302px;
+  top: 47px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -512px 0px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiFanteriaPesante::before {
+  content: attr(data-contenuto);
+  position: absolute;
+  top: -70px;
+  font-size: 40px;
+  transform: translate(-50%, 25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiFanteriaPesante:hover:before {
+  color: blue; }
+
+.PrendiPicchieri {
+  position: absolute;
+  left: 302px;
+  top: 197px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -768px 0px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiPicchieri::after {
+  content: attr(data-contenuto);
+  position: absolute;
+  bottom: -70px;
+  font-size: 40px;
+  transform: translate(-50%, -25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiPicchieri:hover:after {
+  color: blue; }
+
+.PrendiArceri {
+  position: absolute;
+  left: 197px;
+  top: 302px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: 0px -256px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiArceri::after {
+  content: attr(data-contenuto);
+  position: absolute;
+  bottom: -70px;
+  font-size: 40px;
+  transform: translate(-50%, -25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiArceri:hover:after {
+  color: blue; }
+
+.PrendiFanteriaLeggera {
+  position: absolute;
+  left: 47px;
+  top: 302px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -256px -256px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiFanteriaLeggera::after {
+  content: attr(data-contenuto);
+  position: absolute;
+  bottom: -70px;
+  font-size: 40px;
+  transform: translate(-50%, -25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiFanteriaLeggera:hover:after {
+  color: blue; }
+
+.PrendiTrabucco {
+  position: absolute;
+  left: -58px;
+  top: 197px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -512px -256px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiTrabucco::after {
+  content: attr(data-contenuto);
+  position: absolute;
+  bottom: -70px;
+  font-size: 40px;
+  transform: translate(-50%, -25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiTrabucco:hover:after {
+  color: blue; }
+
+.PrendiTorre {
+  position: absolute;
+  left: -58px;
+  top: 47px;
+  width: 256px;
+  height: 256px;
+  background: url("morra/schema imperiale.png");
+  transform: scale(0.3, 0.3);
+  background-position: -768px -256px;
+  border: none;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  border-radius: 150px; }
+.PrendiTorre::before {
+  content: attr(data-contenuto);
+  position: absolute;
+  top: -70px;
+  font-size: 40px;
+  transform: translate(-50%, 25px);
+  z-index: -2;
+  white-space: nowrap;
+  color: gray; }
+.PrendiTorre:hover:before {
+  color: blue; }
+
+
+*/
+div._container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 500px; }
+
+/*canvas#Selezionatore Per ragioni incomprensibili, mettendo il CSS deforma il canvas, anche se nessuna istruzione lo dice
+{
+    width: 500px; // Usando i pixel migliora leggermente rispetto al "100%" ma il risultato è comunque pessimo.
+    height: 500px;
+    background-color: red;
+}*/
+
+/*# sourceMappingURL=MorraImperiale.css.map */

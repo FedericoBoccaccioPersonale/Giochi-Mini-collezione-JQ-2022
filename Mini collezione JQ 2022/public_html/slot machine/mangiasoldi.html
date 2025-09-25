@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Slot machine</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<!-- Continuo davvero a non capire perchè script non supporti la chiusura rapida, soprattutto in caso di src! -->
+	<script type="text/javascript" src="mangiasoldi.js"></script>	
+	
+	<link rel="stylesheet" href="../Pulsanti.css"/>
+	<!-- E in effetti nemmeno perchè i CSS interni sono dentro a style mentre quelli esterni vanno chiamati con link rel -->
+	<link rel="stylesheet" href="mangiasoldi.css"/>
+	<!-- Quanto a VBS, nonostante ancora oggi ci siano pagine recenti che dicono che può essere eseguito, in realtà viene del tutto ignorato in HTML. -->
+    </head>
+    <body>
+	<div class="container d-flex justify-content-center">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		https://www.codingcreativo.it/slot-machine-javascript/<br>
+		Ovviamente l' ho pesantemente dovuto modificare solo per farlo funzionare.<br>
+		Forse avrei dovuto copiare il codice usato nel loro esempio funzionante, solo che è difficile da copiare e comunque così è meglio.
+	    </div>
+	    
+	    <hr><hr><hr>
+	    
+	    
+	    <center>
+		<div id="slot-machine">
+		    <h2 id="titolo">Gioca alla slot machine</h2>
+		    <section class="slots">
+			<div id="slot1" class="icons"></div>
+			<div id="slot2" class="icons"></div>
+			<div id="slot3" class="icons"></div>
+		    </section>
+		    <button id="button-slot">Premi il pulsante e gioca!</button>
+		    <div id="risultato">Il tuo risultato sarà visibile qui!</div>
+		 </div>
+		<hr>
+		<a href='../Index.html'><button class="button-73">Elenco giochi</button></a>
+	    </center>
+	</div>
+    </body>
+</html>
