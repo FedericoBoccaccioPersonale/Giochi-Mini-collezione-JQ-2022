@@ -3,7 +3,7 @@ https://federicoboccaccio.wordpress.com/mini-collezione-jq-2022/
 
 # Importante
 ⚠️ I file "Source code (.zip)" e "Source code (.tar.gz)" sono generati automaticamente da GitHub.<br>
-Contengono la versione leggermente modificata per poter funzionare online o sui sistmi case sensitive, come il Pinguino 🐧.<br>
+Contengono la versione leggermente modificata per poter funzionare online o sui sistemi case sensitive, come il Pinguino 🐧.<br>
 Puoi tranquillamente scaricare dalla release o giocare on line.
 
 # Download
