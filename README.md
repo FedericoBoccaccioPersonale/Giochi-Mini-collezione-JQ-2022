@@ -10,3 +10,6 @@ Puoi tranquillamente scaricare dalla release o giocare on line.
 [Ultima versione](https://github.com/FedericoBoccaccioPersonale/Giochi-Mini-collezione-JQ-2022/releases/latest) (tutte le piattaforme disponibili)
 
 🌐 [Gioca on line](https://federicoboccacciopersonale.github.io/Giochi-Mini-collezione-JQ-2022/Mini%20collezione%20JQ%202022/public_html/index.html)
+
+# Informazioni
+Su GitHub c' è il repository principale, su GitLab è presente il suo clone per backup.
