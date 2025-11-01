@@ -1,4 +1,4 @@
-# Giochi\Mini-collezione-JQ-2022 🎮 🇮🇹
+# Giochi\Mini collezione JQ 2022 🎮 🇮🇹
 https://federicoboccaccio.wordpress.com/mini-collezione-jq-2022/
 
 # Importante
